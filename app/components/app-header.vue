@@ -1,9 +1,8 @@
 <template>
-
     <nav class="flex items-center justify-between border-b-4 border-stone-900 p-6">
         <NuxtLink to="/">
             <h1 class="font-bold text-3xl">
-                Postchy
+                Post Office
             </h1>
         </NuxtLink>
         <div class="flex items-center gap-4">

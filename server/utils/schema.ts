@@ -1,6 +1,5 @@
 import { relations } from 'drizzle-orm';
 import { AnyPgColumn, date, pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
-import { createInsertSchema } from 'drizzle-zod';
 
 export const postsTable = pgTable('posts', {
   id: uuid().primaryKey().defaultRandom(),
@@ -17,5 +16,3 @@ export const postRepliesRelation = relations(postsTable, ({ one, many }) => ({
     references: [postsTable.id],
   }),
 }));
-
-export const postInsertSchema = createInsertSchema(postsTable);

@@ -1,12 +1,13 @@
 <template>
     <div>
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" class="mb-4">
             <PUTextArea placeholder="Write your post here" v-model="newpost" />
             <PUButton class="w-full">Send</PUButton>
         </form>
-        <article v-for="post in posts" :key="post.id">
-            <h2>{{ post.text }}</h2>
-            <p>{{ post.author }}</p>
+        <PULoader v-if="pending" />
+        <article v-else v-for="post in posts" :key="post.id" class="border-2 border-stone-900 p-4 rounded mb-1">
+            <p class="text-2xl">{{ post.text }}</p>
+            <span class="text-sm">- {{ post.author }}</span>
         </article>
     </div>
 </template>

@@ -26,9 +26,6 @@ importers:
       drizzle-orm:
         specifier: ^0.44.3
         version: 0.44.3(@types/pg@8.15.4)(pg@8.16.3)(prisma@6.12.0(typescript@5.8.3))
-      drizzle-zod:
-        specifier: ^0.8.2
-        version: 0.8.2(drizzle-orm@0.44.3(@types/pg@8.15.4)(pg@8.16.3)(prisma@6.12.0(typescript@5.8.3)))(zod@3.25.76)
       eslint:
         specifier: ^9.32.0
         version: 9.32.0(jiti@2.5.1)
@@ -47,6 +44,9 @@ importers:
       vue-router:
         specifier: ^4.5.1
         version: 4.5.1(vue@3.5.18(typescript@5.8.3))
+      zod:
+        specifier: ^4.0.10
+        version: 4.0.10
     devDependencies:
       '@types/pg':
         specifier: ^8.15.4
@@ -2641,12 +2641,6 @@ packages:
         optional: true
       sqlite3:
         optional: true
-
-  drizzle-zod@0.8.2:
-    resolution: {integrity: sha512-9Do/16OjFFNrQDZgvMtxtDDwKWbFOxUAIwNPKX98SfxrP8H18vhN1BvNXbhelLcdgCE7GEaXDJqBjMExSkhpkA==}
-    peerDependencies:
-      drizzle-orm: '>=0.36.0'
-      zod: ^3.25.1
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -5346,6 +5340,9 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
+  zod@4.0.10:
+    resolution: {integrity: sha512-3vB+UU3/VmLL2lvwcY/4RV2i9z/YU0DTV/tDuYjrwmx5WeJ7hwy+rGEEx8glHp6Yxw7ibRbKSaIFBgReRPe5KA==}
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -7951,11 +7948,6 @@ snapshots:
       '@types/pg': 8.15.4
       pg: 8.16.3
       prisma: 6.12.0(typescript@5.8.3)
-
-  drizzle-zod@0.8.2(drizzle-orm@0.44.3(@types/pg@8.15.4)(pg@8.16.3)(prisma@6.12.0(typescript@5.8.3)))(zod@3.25.76):
-    dependencies:
-      drizzle-orm: 0.44.3(@types/pg@8.15.4)(pg@8.16.3)(prisma@6.12.0(typescript@5.8.3))
-      zod: 3.25.76
 
   dunder-proto@1.0.1:
     dependencies:
@@ -11038,3 +11030,5 @@ snapshots:
       readable-stream: 4.7.0
 
   zod@3.25.76: {}
+
+  zod@4.0.10: {}

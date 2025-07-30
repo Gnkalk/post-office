@@ -1,11 +1,16 @@
-import { postInsertSchema, postsTable } from '~~/server/utils/schema';
+import { postsTable } from '~~/server/utils/schema';
+import { z } from 'zod/v4';
+
+const bodySchema = z.object({
+  text: z.string().min(1),
+});
 
 export default defineEventHandler(async (event) => {
   const {
     success: validBody,
     data: body,
     error,
-  } = await readValidatedBody(event, postInsertSchema.safeParse);
+  } = await readValidatedBody(event, bodySchema.safeParse);
 
   if (!validBody) {
     console.log(error);
