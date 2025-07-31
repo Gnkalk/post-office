@@ -7,3 +7,5 @@ type TelegramUser = {
   photo_url: string;
   username: string;
 } | null;
+
+type Session = (TelegramUser & { loggedIn: true }) | { loggedIn: false };

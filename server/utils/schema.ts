@@ -1,15 +1,29 @@
 import { relations } from 'drizzle-orm';
 import { AnyPgColumn, date, pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
 
+export const usersTable = pgTable('users', {
+  id: varchar({ length: 10 }).notNull().primaryKey(),
+  name: varchar({ length: 255 }).notNull(),
+  biography: varchar({ length: 1024 }),
+  username: varchar({ length: 255 }).notNull().unique(),
+  avatar: varchar({ length: 1024 }),
+});
+
 export const postsTable = pgTable('posts', {
   id: uuid().primaryKey().defaultRandom(),
   text: varchar({ length: 255 }).notNull(),
-  author: varchar({ length: 255 }).notNull().default('Anonymous'),
+  authorID: varchar({ length: 10 })
+    .notNull()
+    .references(() => usersTable.id),
   publishedAt: date().defaultNow(),
   replayToID: uuid().references((): AnyPgColumn => postsTable.id),
 });
 
 export const postRepliesRelation = relations(postsTable, ({ one, many }) => ({
+  author: one(usersTable, {
+    fields: [postsTable.authorID],
+    references: [usersTable.id],
+  }),
   replaies: many(postsTable),
   replayTo: one(postsTable, {
     fields: [postsTable.replayToID],

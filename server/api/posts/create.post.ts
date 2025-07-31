@@ -6,14 +6,12 @@ const bodySchema = z.object({
 });
 
 export default defineEventHandler(async (event) => {
-  const {
-    success: validBody,
-    data: body,
-    error,
-  } = await readValidatedBody(event, bodySchema.safeParse);
+  const { success: validBody, data: body } = await readValidatedBody(
+    event,
+    bodySchema.safeParse
+  );
 
   if (!validBody) {
-    console.log(error);
     return createError({
       statusCode: 422,
       message: 'Invalid body',
@@ -30,7 +28,7 @@ export default defineEventHandler(async (event) => {
   );
 
   const post = await db.insert(postsTable).values({
-    author: decodedCookie.first_name,
+    authorID: decodedCookie.id,
     text: body.text,
   });
 

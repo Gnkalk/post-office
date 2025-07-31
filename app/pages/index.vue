@@ -4,10 +4,10 @@
             <PUTextArea placeholder="Write your post here" v-model="newpost" />
             <PUButton class="w-full">Send</PUButton>
         </form>
-        <PULoader v-if="pending" />
+        <PUProgress v-if="pending" :progress="50" mode="radial" size="medium" />
         <article v-else v-for="post in posts" :key="post.id" class="border-2 border-stone-900 p-4 rounded mb-1">
             <p class="text-2xl">{{ post.text }}</p>
-            <span class="text-sm">- {{ post.author }}</span>
+            <span class="text-sm">- {{ post }}</span>
         </article>
     </div>
 </template>
