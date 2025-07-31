@@ -12,16 +12,22 @@ export default defineEventHandler(async (event) => {
   );
 
   if (!validBody) {
-    return createError({
-      statusCode: 422,
-      message: 'Invalid body',
-    });
+    return sendError(
+      event,
+      createError({
+        statusCode: 422,
+        message: 'Invalid body',
+      })
+    );
   }
 
   const session = getCookie(event, 'tg_user');
 
   if (!session)
-    return createError({ statusCode: 401, message: 'Unauthorized' });
+    return sendError(
+      event,
+      createError({ statusCode: 401, message: 'Unauthorized' })
+    );
 
   const decodedCookie = JSON.parse(
     Buffer.from(session, 'base64').toString('utf-8')

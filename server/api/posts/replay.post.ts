@@ -22,7 +22,10 @@ export default defineEventHandler(async (event) => {
   const session = getCookie(event, 'tg_user');
 
   if (!session)
-    return createError({ statusCode: 401, message: 'Unauthorized' });
+    return sendError(
+      event,
+      createError({ statusCode: 401, message: 'Unauthorized' })
+    );
 
   const decodedCookie = JSON.parse(
     Buffer.from(session, 'base64').toString('utf-8')

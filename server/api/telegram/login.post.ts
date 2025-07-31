@@ -16,10 +16,13 @@ export default defineEventHandler(async (event) => {
   );
 
   if (!validBody) {
-    return createError({
-      statusCode: 422,
-      message: 'Invalid body',
-    });
+    return sendError(
+      event,
+      createError({
+        statusCode: 422,
+        message: 'Invalid body',
+      })
+    );
   }
 
   await db

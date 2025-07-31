@@ -1,5 +1,5 @@
 <template>
-    <article class="border-2 border-stone-900 p-4 rounded-lg mb-1" v-if="status === 'success' && post">
+    <article class="border-2 border-stone-900 p-4 rounded-lg mb-1" v-if="post">
         <div class="flex items-center gap-2">
             <PUAvatar :src="post.author.avatar!" shape="rounded" size="small" />
             <div class="flex flex-col">
@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 const { params } = useRoute()
-const { data: post, status } = await useFetch('/api/posts/:id', { params })
+const { data: post } = await useFetch('/api/posts/:id', { params })
 
 
 const replay = ref('')
