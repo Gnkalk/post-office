@@ -23,10 +23,14 @@ export const postRepliesRelation = relations(postsTable, ({ one, many }) => ({
   author: one(usersTable, {
     fields: [postsTable.authorID],
     references: [usersTable.id],
+    relationName: 'author',
   }),
-  replaies: many(postsTable),
+  replays: many(postsTable, {
+    relationName: 'replays',
+  }),
   replayTo: one(postsTable, {
     fields: [postsTable.replayToID],
     references: [postsTable.id],
+    relationName: 'replays',
   }),
 }));
