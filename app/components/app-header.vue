@@ -1,31 +1,27 @@
 <template>
     <nav class="flex items-center justify-between border-b-4 border-stone-900 p-6">
         <NuxtLink to="/">
-            <h1 class="font-bold text-3xl">
-                Post Office
-            </h1>
+            <div class="flex gap-2 items-center">
+                <PUIcon name="building" height="30" width="30" />
+                <h1 class="font-bold text-3xl">
+                    Post Office
+                </h1>
+            </div>
         </NuxtLink>
         <div class="flex items-center gap-4">
-            <User />
+            <UserProfile />
             <PUButton @click="show">New Post</PUButton>
         </div>
     </nav>
     <PUModal>
         <template #header>
-            <h2 class="text-2xl">Custom Header</h2>
+            <h2 class="text-2xl font-bold mb-1 text-center">Post a new Thing</h2>
         </template>
         <template #content>
-            <div class="custom-content">
-                <PUIcon name="info" />
-                <p>Custom modal content here</p>
-            </div>
+            <PostPoster />
         </template>
-
         <template #footer>
-            <div class="flex gap-2">
-                <PUButton @click="hide">Confirm</PUButton>
-                <PUButton flavor="ghost" @click="hide">Cancel</PUButton>
-            </div>
+            <PUButton flavor="ghost" @click="hide" custom-class="w-full">Cancel</PUButton>
         </template>
     </PUModal>
 </template>

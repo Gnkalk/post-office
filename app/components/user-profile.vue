@@ -33,9 +33,8 @@ const loginCallback = async (payload: TelegramUser) => {
 
     if (res.message === 'OK') {
         session.value = {
+            ...res.user,
             loggedIn: true,
-            // @ts-ignore
-            ...res.user
         }
     }
 }
