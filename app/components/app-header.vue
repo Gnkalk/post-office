@@ -18,7 +18,7 @@
             <h2 class="text-2xl font-bold mb-1 text-center">Post a new Thing</h2>
         </template>
         <template #content>
-            <PostPoster />
+            <PostPoster :hide="hide" />
         </template>
         <template #footer>
             <PUButton flavor="ghost" @click="hide" custom-class="w-full">Cancel</PUButton>

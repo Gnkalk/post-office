@@ -15,12 +15,13 @@
 import { useMutation } from "@tanstack/vue-query"
 
 const { session } = useUser()
-const { replayTo } = defineProps<{
+const { replayTo, hide } = defineProps<{
     class?: string;
     replayTo?: {
         name: string;
         id: string
     }
+    hide?: () => void
 }>()
 
 const text = ref('')
@@ -30,9 +31,6 @@ const { mutate: replayMuatate, isPending: isReplaying } = useMutation({
         $fetch('/api/posts/replay', {
             method: 'POST',
             body: { text: arg.text, replayTo: arg.replayTo },
-            headers: {
-                'Content-Type': 'application/json',
-            },
         }),
     onSuccess: () => {
         text.value = ''
@@ -45,13 +43,11 @@ const { mutate: postMuatate, isPending: isPosting } = useMutation({
         $fetch('/api/posts/create', {
             method: 'POST',
             body: { text: arg.text },
-            headers: {
-                'Content-Type': 'application/json',
-            },
         }),
     onSuccess: () => {
         text.value = ''
         refreshNuxtData('posts')
+        hide?.()
     },
 })
 

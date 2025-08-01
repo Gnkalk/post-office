@@ -21,7 +21,7 @@ export default eventHandler(async (event) => {
     if (Date.now() / 1000 - decodedCookie.auth_date > 86400)
       return handleUnauthorized();
 
-    const telegramApiToken = process.env.TELEGRAM_TOKEN;
+    const telegramApiToken = useRuntimeConfig().telegramBotToken;
 
     if (!telegramApiToken)
       return {

@@ -11,4 +11,7 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
   },
+  runtimeConfig: {
+    telegramBotToken: process.env.TELEGRAM_TOKEN,
+  },
 });
