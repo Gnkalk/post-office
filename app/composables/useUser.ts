@@ -13,6 +13,7 @@ export function useUser(): {
 export const clearSession = async () => {
   await $fetch('/api/telegram/session', { method: 'DELETE' });
   useSessionState().value = { loggedIn: false };
+  reloadNuxtApp();
 };
 
 export const fetchSession = async () => {

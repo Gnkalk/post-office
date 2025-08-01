@@ -37,5 +37,6 @@ const loginCallback = async (payload: TelegramUser) => {
             loggedIn: true,
         }
     }
+    reloadNuxtApp()
 }
 </script>
