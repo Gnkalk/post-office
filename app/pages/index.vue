@@ -12,5 +12,9 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+    title: 'Post Office - Posts',
+})
+
 const { data: posts, pending } = await useFetch('/api/posts', { lazy: true, key: 'posts' })
 </script>

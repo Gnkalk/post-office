@@ -24,4 +24,8 @@
 <script setup lang="ts">
 const { params } = useRoute()
 const { data: post } = await useFetch<Post>(`/api/posts/${params.id}`, { key: `post-${params.id}` })
+
+useHead({
+    title: `Post Office - ${post?.value?.author.name} Post`,
+})
 </script>

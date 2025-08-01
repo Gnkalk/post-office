@@ -21,6 +21,7 @@
 </template>
 
 <script setup lang="ts">
+const { session } = useUser()
 const { params } = useRoute()
 const { data } = await useAsyncData(async () => {
     const user = await $fetch(`/api/user/${params.id}`)
@@ -28,5 +29,13 @@ const { data } = await useAsyncData(async () => {
     if (!user) return undefined
     const posts = await $fetch(`/api/posts/user/${user.id}`)
     return { user, posts }
+})
+
+useHead({
+    title: `Post Office - ${data.value?.user.name} Profile`,
+})
+
+onBeforeMount(() => {
+    if (session.value.loggedIn && session.value.username === params.id) navigateTo('/profile')
 })
 </script>

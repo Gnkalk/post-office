@@ -31,4 +31,8 @@ onBeforeMount(() => {
     if (session.value.loggedIn) execute()
 })
 const { data: posts, pending, execute } = await useFetch<Post[]>(`/api/posts/user/${session.value.loggedIn ? session.value.id : ''}`, { lazy: true, immediate: false })
+
+useHead({
+    title: `Post Office - Your Profile`,
+})
 </script>
