@@ -23,5 +23,5 @@
 
 <script setup lang="ts">
 const { params } = useRoute()
-const { data: post } = await useFetch<Post>(`/api/posts/${params.id}`)
+const { data: post } = await useFetch<Post>(`/api/posts/${params.id}`, { key: `post-${params.id}` })
 </script>

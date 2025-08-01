@@ -1,5 +1,11 @@
 import { relations } from 'drizzle-orm';
-import { AnyPgColumn, date, pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
+import {
+  AnyPgColumn,
+  pgTable,
+  timestamp,
+  uuid,
+  varchar,
+} from 'drizzle-orm/pg-core';
 
 export const usersTable = pgTable('users', {
   id: varchar({ length: 10 }).notNull().primaryKey(),
@@ -15,7 +21,7 @@ export const postsTable = pgTable('posts', {
   authorID: varchar({ length: 10 })
     .notNull()
     .references(() => usersTable.id),
-  publishedAt: date().defaultNow(),
+  publishedAt: timestamp().defaultNow(),
   replayToID: uuid().references((): AnyPgColumn => postsTable.id),
 });
 

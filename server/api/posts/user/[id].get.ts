@@ -10,6 +10,7 @@ export default defineEventHandler((event) => {
   return db.query.postsTable.findMany({
     where: ({ authorID, replayToID }, { eq, and, isNull }) =>
       and(eq(authorID, userID.toString()), isNull(replayToID)),
+    orderBy: ({ publishedAt }, { desc }) => desc(publishedAt),
     with: {
       author: {
         columns: {

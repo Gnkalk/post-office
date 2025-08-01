@@ -18,6 +18,7 @@ export default defineEventHandler(async (event) => {
         },
       },
       replays: {
+        orderBy: ({ publishedAt }, { desc }) => desc(publishedAt),
         with: {
           author: {
             columns: {

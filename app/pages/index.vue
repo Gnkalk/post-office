@@ -12,5 +12,5 @@
 </template>
 
 <script setup lang="ts">
-const { data: posts, pending } = await useFetch('/api/posts', { lazy: true })
+const { data: posts, pending } = await useFetch('/api/posts', { lazy: true, key: 'posts' })
 </script>
