@@ -13,5 +13,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     telegramBotToken: process.env.TELEGRAM_TOKEN,
+    public: {
+      telegramBotID: process.env.TELEGRAM_ID,
+    },
   },
 });

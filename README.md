@@ -1,75 +1,62 @@
-# Nuxt Minimal Starter
+# Post Office 📬
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A mini-blogging platform built with Nuxt 4, similar to Twitter, featuring Telegram authentication as a learning project to explore NuxtJS. 🚀
 
-## Setup
+![Post Office Screenshot](/Screenshot.png)
 
-Make sure to install dependencies:
+## Features ✨
+- 🔐 Telegram authentication
+- ✍️ Create posts
+- 💬 Reply to posts
+- 😍 React to posts (maybe in the future)
+- 🗑️ Delete own posts
+- 📱 Responsive design
 
+## Tech Stack 🛠️
+- **Frontend**: Nuxt 4, Vue 3
+- **Authentication**: Telegram Login Widget
+- **UI**: Nuxt Paper UI
+- **ORM**: Drizzle ORM (PostgreSQL)
+
+## Getting Started 🚀
+
+### Prerequisites
+- Node.js (v18+)
+- npm/pnpm/bun
+- Telegram Bot Token
+
+### Installation
 ```bash
-# npm
+git clone https://github.com/gnkalk/post-office.git
+cd post-office
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+### Environment Setup
+Create `.env` file:
+```
+DATABASE_URL=<your_database_url>
+TELEGRAM_TOKEN=<your_bot_token>
+TELEGRAM_ID=<your_bot_id>
+```
 
-Start the development server on `http://localhost:3000`:
+### Telegram Setup
+1. Create bot via [@BotFather](https://t.me/botfather)
+2. Configure domain in bot settings
 
+## Development 🛠️
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
+Visit [http://localhost:3000](http://localhost:3000)
 
-## Production
+## Learning Resources 📚
+- [Nuxt 4 Docs](https://nuxt.com/docs)
+- [Vue 3 Docs](https://vuejs.org/)
+- [Paper UI](https://paper-docs.nuxt.space/)
 
-Build the application for production:
+## Contributing 🤝
+Got ideas? Spotted a bug? We'd love your help! Jump in with PRs, issues, or just feedback. Every contribution helps make Post Office better for everyone. Let's build something awesome together! 💪
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## License 📄
+Distributed under the Apache License 2.0 - feel free to use, modify, and share. See [LICENSE](LICENSE) for details.

@@ -2,6 +2,7 @@ import { relations } from 'drizzle-orm';
 import {
   AnyPgColumn,
   pgTable,
+  text,
   timestamp,
   uuid,
   varchar,
@@ -17,7 +18,7 @@ export const usersTable = pgTable('users', {
 
 export const postsTable = pgTable('posts', {
   id: uuid().primaryKey().defaultRandom(),
-  text: varchar({ length: 255 }).notNull(),
+  text: text().notNull(),
   authorID: varchar({ length: 10 })
     .notNull()
     .references(() => usersTable.id),

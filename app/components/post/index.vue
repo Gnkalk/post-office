@@ -8,9 +8,9 @@
                     v-if="session.loggedIn && post.author.username === session.username" />
             </div>
         </div>
-        <p v-if="post.id === $route.params.id" class="text-2xl">{{ post.text }}</p>
+        <p v-if="post.id === $route.params.id" class="text-lg" dir="auto">{{ post.text }}</p>
         <NuxtLink :to="`/${post.id}`" v-else>
-            <p class="text-2xl">{{ post.text }}</p>
+            <p class="text-lg" dir="auto">{{ post.text }}</p>
         </NuxtLink>
         <template v-if="post.replays">
             <PostPoster :replay-to="{

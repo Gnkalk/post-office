@@ -10,7 +10,7 @@
         </NuxtLink>
         <div class="flex items-center gap-4">
             <UserProfile />
-            <PUButton @click="show">New Post</PUButton>
+            <PUButton @click="show" class="max-md:!hidden">New Post</PUButton>
         </div>
     </nav>
     <PUModal>

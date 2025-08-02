@@ -3,7 +3,7 @@
         <NuxtLink to="/profile">
             <div class="flex items-center gap-2">
                 <PUAvatar :src="session.photo_url" shape="rounded" />
-                <div class="flex flex-col">
+                <div class="flex flex-col max-md:hidden">
                     <div class="text-xl font-bold">
                         {{ session.first_name }}
                     </div>
@@ -15,13 +15,15 @@
         </NuxtLink>
     </div>
     <div v-else>
-        <TelegramLogin telegram-login="gnkalk_auth_bot" radius="10" @callback="loginCallback" />
+        <TelegramLogin :telegram-login="telegramBotID" radius="10" :userpic="false" @callback="loginCallback" />
     </div>
 </template>
 
 <script setup lang="ts">
 const { session } = useUser();
 const { add } = useToast()
+
+const { public: { telegramBotID } } = useRuntimeConfig()
 
 const loginCallback = async (payload: TelegramUser) => {
     const res = await $fetch('/api/telegram/login', {
