@@ -16,21 +16,16 @@
         </div>
         <p v-else>You are not logged in</p>
         <p v-if="pending">Loading...</p>
-        <article class="border-2 border-stone-900 p-4 rounded-lg mb-1" v-else v-for="post in posts" :key="post.id">
-            <PostUser :user="post.author" />
-            <NuxtLink :to="`/${post.id}`">
-                <p class="text-2xl">{{ post.text }}</p>
-            </NuxtLink>
-        </article>
+        <Post v-else v-for="post in posts" :key="post.id" :post="post" />
     </div>
 </template>
 
 <script setup lang="ts">
 const { session, clearSession } = useUser()
-onBeforeMount(() => {
+onMounted(() => {
     if (session.value.loggedIn) execute()
 })
-const { data: posts, pending, execute } = await useFetch<Post[]>(`/api/posts/user/${session.value.loggedIn ? session.value.id : ''}`, { lazy: true, immediate: false })
+const { data: posts, pending, execute } = await useFetch<Post[]>(`/api/posts/user/${session.value.loggedIn ? session.value.id : ''}`, { lazy: true, immediate: false, transform: (data) => data.map(post => ({ ...post, publishedAt: new Date(post.publishedAt) })) })
 
 useHead({
     title: `Post Office - Your Profile`,

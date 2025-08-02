@@ -2,12 +2,7 @@
     <div>
         <PostPoster class="mb-4" />
         <p v-if="pending">Loading...</p>
-        <article class="border-2 border-stone-900 p-4 rounded-lg mb-1" v-else v-for="post in posts" :key="post.id">
-            <PostUser :user="post.author" />
-            <NuxtLink :to="`/${post.id}`">
-                <p class="text-2xl">{{ post.text }}</p>
-            </NuxtLink>
-        </article>
+        <Post v-else v-for="post in posts" :key="post.id" :post="post" />
     </div>
 </template>
 
@@ -16,5 +11,8 @@ useHead({
     title: 'Post Office - Posts',
 })
 
-const { data: posts, pending } = await useFetch('/api/posts', { lazy: true, key: 'posts' })
+
+const { data: posts, pending } = await useFetch('/api/posts', {
+    lazy: true, key: 'posts', transform: (data) => data.map(post => ({ ...post, publishedAt: new Date(post.publishedAt) }))
+})
 </script>

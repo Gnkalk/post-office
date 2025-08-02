@@ -9,7 +9,11 @@ type TelegramUser = {
 
 type Session = (TelegramUser & { loggedIn: true }) | { loggedIn: false };
 
+type NullableKeys<T, K extends keyof T> = Omit<T, K> & {
+  [P in K]?: T[P];
+};
+
 type Post = typeof postsTable.$inferSelect & {
-  author: typeof usersTable.$inferSelect;
-  replays: Post[];
+  author: NullableKeys<typeof usersTable.$inferSelect, 'id' | 'biography'>;
+  replays?: Post[];
 };

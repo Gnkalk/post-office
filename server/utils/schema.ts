@@ -21,7 +21,7 @@ export const postsTable = pgTable('posts', {
   authorID: varchar({ length: 10 })
     .notNull()
     .references(() => usersTable.id),
-  publishedAt: timestamp().defaultNow(),
+  publishedAt: timestamp().notNull().defaultNow(),
   replayToID: uuid().references((): AnyPgColumn => postsTable.id),
 });
 

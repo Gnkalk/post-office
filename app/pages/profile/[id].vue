@@ -11,12 +11,7 @@
                 </p>
             </div>
         </div>
-        <article class="border-2 border-stone-900 p-4 rounded-lg mb-1" v-for="post in data?.posts" :key="post.id">
-            <PostUser :user="post.author" />
-            <NuxtLink :to="`/${post.id}`">
-                <p class="text-2xl">{{ post.text }}</p>
-            </NuxtLink>
-        </article>
+        <Post v-for="post in data?.posts" :key="post.id" :post="post" />
     </div>
 </template>
 
@@ -25,9 +20,8 @@ const { session } = useUser()
 const { params } = useRoute()
 const { data } = await useAsyncData(async () => {
     const user = await $fetch(`/api/user/${params.id}`)
-    console.log(user)
     if (!user) return undefined
-    const posts = await $fetch(`/api/posts/user/${user.id}`)
+    const posts = (await $fetch(`/api/posts/user/${user.id}`)).map(post => ({ ...post, publishedAt: new Date(post.publishedAt) }))
     return { user, posts }
 })
 
