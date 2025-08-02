@@ -4,6 +4,8 @@ A mini-blogging platform built with Nuxt 4, similar to Twitter, featuring Telegr
 
 ![Post Office Screenshot](/Screenshot.png)
 
+[**Demo**](https://post-office.liara.run/)
+
 ## Features ✨
 - 🔐 Telegram authentication
 - ✍️ Create posts
@@ -36,13 +38,16 @@ npm install
 Create `.env` file:
 ```
 DATABASE_URL=<your_database_url>
-TELEGRAM_TOKEN=<your_bot_token>
-TELEGRAM_ID=<your_bot_id>
+NUXT_TELEGRAM_BOT_TOKEN=<your_bot_token>
+NUXT_PUBLIC_TELEGRAM_BOT_ID=<your_bot_id>
 ```
 
 ### Telegram Setup
 1. Create bot via [@BotFather](https://t.me/botfather)
 2. Configure domain in bot settings
+
+### Database Setup
+Keep in mind that you need to push schema to database before running the app.
 
 ## Development 🛠️
 ```bash

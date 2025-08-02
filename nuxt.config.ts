@@ -12,9 +12,9 @@ export default defineNuxtConfig({
     typeCheck: true,
   },
   runtimeConfig: {
-    telegramBotToken: process.env.TELEGRAM_TOKEN,
+    telegramBotToken: '',
     public: {
-      telegramBotID: process.env.TELEGRAM_ID,
+      telegramBotID: '',
     },
   },
 });
