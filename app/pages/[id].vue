@@ -13,5 +13,8 @@ const { data: post } = await useFetch<Post>(`/api/posts/${params.id}`, { key: `p
 
 useHead({
     title: `Post Office - ${post?.value?.author.name} Post`,
+    meta: [
+        { name: 'description', content: post.value?.text }
+    ]
 })
 </script>

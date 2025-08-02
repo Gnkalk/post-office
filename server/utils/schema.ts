@@ -22,7 +22,9 @@ export const postsTable = pgTable('posts', {
     .notNull()
     .references(() => usersTable.id),
   publishedAt: timestamp().notNull().defaultNow(),
-  replayToID: uuid().references((): AnyPgColumn => postsTable.id),
+  replayToID: uuid().references((): AnyPgColumn => postsTable.id, {
+    onDelete: 'cascade',
+  }),
 });
 
 export const postRepliesRelation = relations(postsTable, ({ one, many }) => ({

@@ -29,12 +29,12 @@ export default defineEventHandler(async (event) => {
       createError({ statusCode: 401, message: 'Unauthorized' })
     );
 
-  const decodedCookie = JSON.parse(
+  const decodedSession = JSON.parse(
     Buffer.from(session, 'base64').toString('utf-8')
   );
 
   const post = await db.insert(postsTable).values({
-    authorID: decodedCookie.id,
+    authorID: decodedSession.id,
     text: body.text,
   });
 
