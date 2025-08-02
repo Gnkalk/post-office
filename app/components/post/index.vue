@@ -12,17 +12,19 @@
         <NuxtLink :to="`/${post.id}`" v-else>
             <p class="text-2xl">{{ post.text }}</p>
         </NuxtLink>
-        <PostPoster :replay-to="{
-            id: post.id,
-            name: post.author.name
-        }" class="my-4" />
-        <article class="border-2 border-stone-900 p-4 rounded-lg mb-1" v-if="post.replays" v-for="reply in post.replays"
-            :key="reply.id">
-            <PostUser :user="reply.author" />
-            <NuxtLink :to="`/${reply.id}`">
-                <p class="text-2xl">{{ reply.text }}</p>
-            </NuxtLink>
-        </article>
+        <template v-if="post.replays">
+            <PostPoster :replay-to="{
+                id: post.id,
+                name: post.author.name
+            }" class="my-4" />
+            <article class="border-2 border-stone-900 p-4 rounded-lg mb-1" v-for="reply in post.replays"
+                :key="reply.id">
+                <PostUser :user="reply.author" />
+                <NuxtLink :to="`/${reply.id}`">
+                    <p class="text-2xl">{{ reply.text }}</p>
+                </NuxtLink>
+            </article>
+        </template>
     </article>
 </template>
 
@@ -30,6 +32,9 @@
 import { useMutation } from '@tanstack/vue-query';
 
 const { session } = useUser()
+const { add } = useToast()
+const { params } = useRoute()
+const router = useRouter()
 
 const { post } = defineProps<{
     post: Post
@@ -43,6 +48,13 @@ const { mutate: deleteMuatate, isPending: isdeleteing } = useMutation({
     onSuccess: () => {
         refreshNuxtData(`posts`)
         clearNuxtData(`post-${post.id}`)
+        add({
+            severity: 'secondary',
+            summary: 'Post deleted',
+            detail: 'Your post has been deleted',
+            life: 1000,
+        })
+        if (post.id === params.id) router.back()
     },
 })
 

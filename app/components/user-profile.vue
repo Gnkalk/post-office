@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 const { session } = useUser();
+const { add } = useToast()
 
 const loginCallback = async (payload: TelegramUser) => {
     const res = await $fetch('/api/telegram/login', {
@@ -38,5 +39,11 @@ const loginCallback = async (payload: TelegramUser) => {
         }
     }
     reloadNuxtApp()
+    add({
+        severity: 'primary',
+        summary: 'Logged in successfully',
+        detail: 'You can now post',
+        life: 1000,
+    })
 }
 </script>

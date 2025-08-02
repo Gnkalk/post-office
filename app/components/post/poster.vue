@@ -15,6 +15,7 @@
 import { useMutation } from "@tanstack/vue-query"
 
 const { session } = useUser()
+const { add } = useToast()
 const { replayTo, hide } = defineProps<{
     class?: string;
     replayTo?: {
@@ -35,6 +36,11 @@ const { mutate: replayMuatate, isPending: isReplaying } = useMutation({
     onSuccess: () => {
         text.value = ''
         refreshNuxtData(`post-${replayTo?.id}`)
+        add({
+            severity: 'secondary',
+            summary: 'Replyed Successfully',
+            life: 1000,
+        })
     },
 })
 
@@ -48,6 +54,12 @@ const { mutate: postMuatate, isPending: isPosting } = useMutation({
         text.value = ''
         refreshNuxtData('posts')
         hide?.()
+        add({
+            severity: 'primary',
+            summary: 'Post Created',
+            detail: 'Your post has been created',
+            life: 1000,
+        })
     },
 })
 

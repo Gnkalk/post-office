@@ -3,6 +3,7 @@
     <main class="mx-auto mt-6 max-w-screen-sm">
         <slot />
     </main>
+    <PUToast position="bottom-right" />
 </template>
 
 <style>
