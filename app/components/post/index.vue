@@ -17,13 +17,7 @@
                 id: post.id,
                 name: post.author.name
             }" class="my-4" />
-            <article class="border-2 border-stone-900 p-4 rounded-lg mb-1" v-for="reply in post.replays"
-                :key="reply.id">
-                <PostUser :user="reply.author" />
-                <NuxtLink :to="`/${reply.id}`">
-                    <p class="text-2xl">{{ reply.text }}</p>
-                </NuxtLink>
-            </article>
+            <Post v-for="reply in post.replays" :key="reply.id" :post="reply" />
         </template>
     </article>
 </template>
