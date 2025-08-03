@@ -17,3 +17,13 @@ type Post = typeof postsTable.$inferSelect & {
   author: NullableKeys<typeof usersTable.$inferSelect, 'id' | 'biography'>;
   replays?: Post[];
 };
+
+type Reaction = {
+  type: 'like' | 'dislike' | 'joy' | 'poo' | 'moyai' | 'heart';
+  count: number;
+};
+
+type Reactions = {
+  reactions: Reaction[];
+  userReaction?: Reaction['type'];
+};

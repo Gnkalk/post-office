@@ -12,6 +12,7 @@
         <NuxtLink :to="`/${post.id}`" v-else>
             <p class="text-lg" dir="auto">{{ post.text }}</p>
         </NuxtLink>
+        <PostReactions :post="post" v-if="!isReplayTo" />
         <template v-if="post.replays">
             <PostPoster :replay-to="{
                 id: post.id,
@@ -51,7 +52,6 @@ const { mutate: deleteMuatate, isPending: isdeleteing } = useMutation({
         })
 
         if (isReplayTo) {
-            router.push(`/${isReplayTo}`)
             refreshNuxtData(`post-${isReplayTo}`)
         } else if (post.id === params.id) router.back()
     },
