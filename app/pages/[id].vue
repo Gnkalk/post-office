@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 const { params } = useRoute()
-const { data: post } = await useFetch<Post>(`/api/posts/${params.id}`, { key: `post-${params.id}`, transform: (post) => ({ ...post, publishedAt: new Date(post.publishedAt) }) })
+const { data: post } = await useFetch<Post>(`/api/posts/${params.id}`, { key: `post-${params.id}`, transform: (post) => ({ ...post, publishedAt: new Date(post.publishedAt), replays: post.replays?.map(replay => ({ ...replay, publishedAt: new Date(replay.publishedAt) })) }) })
 
 useHead({
     title: `Post Office - ${post?.value?.author.name} Post`,

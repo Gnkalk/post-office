@@ -17,7 +17,7 @@
                 id: post.id,
                 name: post.author.name
             }" class="my-4" />
-            <Post v-for="reply in post.replays" :key="reply.id" :post="reply" />
+            <Post v-for="reply in post.replays" :key="reply.id" :post="reply" :is-replay-to="post.id" />
         </template>
     </article>
 </template>
@@ -30,8 +30,9 @@ const { add } = useToast()
 const { params } = useRoute()
 const router = useRouter()
 
-const { post } = defineProps<{
+const { post, isReplayTo } = defineProps<{
     post: Post
+    isReplayTo?: string
 }>()
 
 const { mutate: deleteMuatate, isPending: isdeleteing } = useMutation({
@@ -48,7 +49,11 @@ const { mutate: deleteMuatate, isPending: isdeleteing } = useMutation({
             detail: 'Your post has been deleted',
             life: 1000,
         })
-        if (post.id === params.id) router.back()
+
+        if (isReplayTo) {
+            router.push(`/${isReplayTo}`)
+            refreshNuxtData(`post-${isReplayTo}`)
+        } else if (post.id === params.id) router.back()
     },
 })
 

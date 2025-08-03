@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+
+<svg
+   height="800px"
+   width="800px"
+   version="1.1"
+   id="_x32_"
+   viewBox="0 0 512 512"
+   xml:space="preserve"
+   fill="#000000"
+   sodipodi:docname="person-svgrepo-com.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs2" /><sodipodi:namedview
+   id="namedview2"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showguides="true"
+   inkscape:zoom="1"
+   inkscape:cx="400"
+   inkscape:cy="400"
+   inkscape:window-width="1920"
+   inkscape:window-height="1011"
+   inkscape:window-x="0"
+   inkscape:window-y="32"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="_x32_"><sodipodi:guide
+     position="255.505,294.51973"
+     orientation="1,0"
+     id="guide2"
+     inkscape:locked="false" /></sodipodi:namedview>
+
+<g
+   id="SVGRepo_bgCarrier"
+   stroke-width="0" />
+
+<g
+   id="SVGRepo_tracerCarrier"
+   stroke-linecap="round"
+   stroke-linejoin="round" />
+
+<g
+   id="SVGRepo_iconCarrier"
+   transform="matrix(1.0205388,0,0,1.0205388,-5.7529328,65.004127)"> <style
+   type="text/css"
+   id="style1"> .st0{fill:#000000;} </style> <g
+   id="g2"> <path
+   class="st0"
+   d="m 256,265.308 c 73.252,0 132.644,-59.391 132.644,-132.654 C 388.644,59.412 329.252,0 256,0 182.738,0 123.357,59.412 123.357,132.654 c 0,73.263 59.381,132.654 132.643,132.654 z"
+   id="path1" /> <path
+   class="st0"
+   d="m 425.874,393.104 c -5.922,-35.474 -36,-84.509 -57.552,-107.465 -5.829,-6.212 -15.948,-3.628 -19.504,-1.427 -27.04,16.672 -58.782,26.399 -92.819,26.399 -34.036,0 -65.778,-9.727 -92.818,-26.399 -3.555,-2.201 -13.675,-4.785 -19.505,1.427 C 122.126,308.595 92.048,357.63 86.125,393.104 71.573,480.444 164.877,512 256,512 c 91.123,0 184.427,-31.556 169.874,-118.896 z"
+   id="path2" /> </g> </g>
+
+</svg>
