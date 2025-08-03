@@ -10,7 +10,7 @@ A mini-blogging platform built with Nuxt 4, similar to Twitter, featuring Telegr
 - 🔐 Telegram authentication
 - ✍️ Create posts
 - 💬 Reply to posts
-- 😍 React to posts (maybe in the future)
+- 😍 React to posts
 - 🗑️ Delete own posts
 - 📱 Responsive design
 
