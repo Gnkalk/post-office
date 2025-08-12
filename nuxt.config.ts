@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@paper-ui/nuxt',
     '@nuxtjs/tailwindcss',
     '@nuxt/fonts',
+    '@vueuse/nuxt',
   ],
   typescript: {
     typeCheck: true,

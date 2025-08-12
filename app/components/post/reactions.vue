@@ -1,12 +1,13 @@
 <template>
-    <div v-if="pending || isReactionPending" class="bg-stone-200 rounded-full px-4 py-1 my-2">
+    <div v-if="isLoading" class="bg-stone-200 rounded-full px-4 pb-1.5 pt-1 my-2">
         <span class="text-sm">
             🔄 {{ " " }}
         </span>
         Loading...
     </div>
     <div class="flex gap-2 my-2" v-else>
-        <span v-for="reaction in data?.reactions" :key="reaction.type" class="bg-stone-200 rounded-full px-4 py-1"
+        <span v-for="reaction in data?.reactions" :key="reaction.type"
+            :class="cn('bg-stone-200 rounded-full px-4 pb-1.5 pt-1', reaction.type === data?.userReaction && 'bg-stone-800 text-white')"
             @click="addReaction(reaction.type)">
             <span class="text-sm">
                 {{ emojis[reaction.type] }}
@@ -27,6 +28,7 @@
 </template>
 
 <script setup lang="ts">
+import { refDebounced } from '#imports';
 import { useMutation } from '@tanstack/vue-query';
 const emojis = {
     heart: '❤️',
@@ -57,4 +59,6 @@ const { mutate: addReaction, isPending: isReactionPending } = useMutation({
         refreshNuxtData(`post-${post.id}-reactions`)
     },
 })
+
+const isLoading = refDebounced(pending || isReactionPending, 250)
 </script>
